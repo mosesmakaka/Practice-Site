@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +7,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.6;
     color: #333;
     background: linear-gradient(120deg, #f3f3f3, #ffffff);
@@ -55,29 +54,43 @@ header .nav-links a:hover {
 
 /* Hero Section */
 .hero {
-    text-align: center;
-    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero img {
-    max-width: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 3rem;
     border-radius: 15px;
-    margin-bottom: 1rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center the content */
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #000;
     animation: fadeIn 1s ease-out;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
     color: #555;
 }
 
@@ -89,12 +102,13 @@ header .nav-links a:hover {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
 }
 
 .hero button:hover {
-    background-color: #333;
-    transform: scale(1.05);
+    background-color: #111;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Features Section */
@@ -103,15 +117,17 @@ header .nav-links a:hover {
     justify-content: space-around;
     padding: 4rem 2rem;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .feature-card {
     background: #fff;
     border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
-    flex: 1;
+    flex: 1 1 300px; /* Added flex-basis for better responsiveness */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .feature-card img {
@@ -129,6 +145,11 @@ header .nav-links a:hover {
     font-size: 1rem;
     font-weight: 300;
     color: #666;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Footer Styles */
@@ -150,41 +171,3 @@ footer a {
 
 footer a:hover {
     color: #ccc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .features {
-        flex-direction: column;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
