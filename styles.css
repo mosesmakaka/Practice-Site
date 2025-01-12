@@ -1,48 +1,190 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
+    background: linear-gradient(120deg, #f3f3f3, #ffffff);
+    overflow-x: hidden;
 }
 
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f9f9f9;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* Header Styles */
 header {
-    background: #000;
-    color: #fff;
-    padding: 1rem 2rem;
+    padding: 2rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(90deg, #000, #333);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.nav-links {
-    list-style: none;
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-.nav-links a {
+header .nav-links a {
     color: #fff;
     text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
+header .nav-links a:hover {
+    color: #ccc;
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
-    padding: 5rem 2rem;
-    background: #eaeaea;
+    padding: 4rem 2rem;
 }
 
-footer {
+.hero img {
+    max-width: 80%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #000;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.hero button {
+    background: linear-gradient(90deg, #000, #444);
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 2rem;
+    gap: 2rem;
+}
+
+.feature-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 1rem;
+    flex: 1;
+}
+
+.feature-card img {
+    width: 100px;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #666;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 5rem;
+    padding: 2rem;
     background: #000;
     color: #fff;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .features {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
