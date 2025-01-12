@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice-Site</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
+
 <body>
     <header>
         <div class="logo">Practice-Site</div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
                 <li><a href="#footer">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="hero" class="hero">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hero Image">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Hero Image">
         <div class="hero-content">
-            <h1>Experience Minimalism</h1>
-            <p>Streamlined design. Premium experience.</p>
-            <button>Learn More</button>
+            <h1 data-aos="fade-down">Experience Minimalism</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Streamlined design. Premium experience.</p>
+            <button data-aos="zoom-in" data-aos-delay="400">Learn More</button>
         </div>
     </section>
 
     <section id="features" class="features">
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-right">
             <img src="https://img.icons8.com/ios-filled/100/000000/speedometer.png" alt="Speed Icon">
             <h3>Speed</h3>
             <p>Fast-loading design that keeps users engaged.</p>
         </div>
-        <div class="feature-card">
-            <img src="https://img.icons8.com/ios-filled/100/000000/iphone-x.png" alt="Responsiveness Icon"> <--- Corrected Link
+        <div class="feature-card" data-aos="fade-up">
+            <img src="https://img.icons8.com/ios-filled/100/000000/iphone-x.png" alt="Responsiveness Icon">
             <h3>Responsiveness</h3>
             <p>Looks great on every device and screen size.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" data-aos="fade-left">
             <img src="https://img.icons8.com/ios-filled/100/000000/design.png" alt="Elegance Icon">
             <h3>Elegance</h3>
             <p>Aesthetic design to elevate your brand.</p>
@@ -54,5 +59,14 @@
     </footer>
 
     <script src="scripts.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120,
+            easing: 'ease-in-out',
+        });
+    </script>
 </body>
+
 </html>

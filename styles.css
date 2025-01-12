@@ -20,6 +20,11 @@ img {
     display: block;
 }
 
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+}
+
 /* Header Styles */
 header {
     padding: 2rem 4rem;
@@ -29,6 +34,9 @@ header {
     background: linear-gradient(90deg, #000, #333);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header .logo {
@@ -39,12 +47,11 @@ header .logo {
 header .nav-links {
     display: flex;
     gap: 2rem;
+    list-style: none;
 }
 
 header .nav-links a {
     color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -76,7 +83,7 @@ header .nav-links a:hover {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 3rem;
     border-radius: 15px;
-    text-align: center; /* Center the content */
+    text-align: center;
 }
 
 .hero h1 {
@@ -102,7 +109,7 @@ header .nav-links a:hover {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero button:hover {
@@ -126,7 +133,7 @@ header .nav-links a:hover {
     padding: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
-    flex: 1 1 300px; /* Added flex-basis for better responsiveness */
+    flex: 1 1 300px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -164,10 +171,113 @@ footer {
 
 footer a {
     color: #fff;
-    text-decoration: none;
-    font-weight: 600;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
     color: #ccc;
+}
+
+/* About Page Styles */
+.about-page {
+    padding: 4rem 2rem;
+}
+
+.about-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.about-section {
+    margin-bottom: 3rem;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Marketplace Styles */
+.marketplace {
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Page Styles */
+.product-details {
+    padding: 4rem 2rem;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.product-image {
+    flex: 1 1 400px;
+    max-width: 50%;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    flex: 1 1 400px;
+}
+
+.product-variations {
+    margin-top: 2rem;
