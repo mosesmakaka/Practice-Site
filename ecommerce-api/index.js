@@ -1,60 +1,82 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const Product = require('./models/Product'); // Import the Product model
 
 const app = express();
-const PORT = 5000;
-
-// Middleware
 app.use(express.json());
-app.use(cors());
 
-// MongoDB connection string
-const DB_CONNECTION_STRING = "mongodb://127.0.0.1:27017/ecommerce";
-
-mongoose
-  .connect(DB_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB!"))
-  .catch(err => console.error("Error connecting to MongoDB:", err));
-
-// Product schema
-const productSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  description: String,
-});
-
-const Product = mongoose.model("Product", productSchema);
+// MongoDB connection
+mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Successfully connected to MongoDB'))
+  .catch(err => console.log('Error connecting to MongoDB:', err));
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Welcome to the E-commerce API!");
-});
-
-// Get all products
-app.get("/products", async (req, res) => {
+// GET all products
+app.get('/products', async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch products." });
+    res.status(500).json({ message: 'Error fetching products' });
   }
 });
 
-// Add a new product
-app.post("/products", async (req, res) => {
-  const { name, price, description } = req.body;
-
-  const newProduct = new Product({ name, price, description });
+// POST a new product
+app.post('/products', async (req, res) => {
   try {
-    const savedProduct = await newProduct.save();
-    res.status(201).json(savedProduct);
+    const product = new Product(req.body); // req.body should contain { name, photo, description }
+    await product.save();
+    res.status(201).json(product);
   } catch (err) {
-    res.status(500).json({ error: "Failed to add product." });
+    res.status(400).json({ message: 'Error adding product' });
+  }
+});
+
+// GET a specific product by name
+app.get('/products/:name', async (req, res) => {
+  try {
+    const product = await Product.findOne({ name: req.params.name }); // Find by product name
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching product' });
+  }
+});
+
+// PUT to update a product by name
+app.put('/products/:name', async (req, res) => {
+  try {
+    const product = await Product.findOneAndUpdate(
+      { name: req.params.name }, // Find by product name
+      req.body, // Update with the data from the request body
+      { new: true } // Return the updated product
+    );
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json(product);
+  } catch (err) {
+    res.status(400).json({ message: 'Error updating product' });
+  }
+});
+
+// DELETE a product by name
+app.delete('/products/:name', async (req, res) => {
+  try {
+    const product = await Product.findOneAndDelete({ name: req.params.name }); // Delete by product name
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json({ message: 'Product deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting product' });
   }
 });
 
 // Start the server
+const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
